@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>CFServices Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #0e0e11;
+      --panel: #16161d;
+      --border: #222;
+      --accent: #00ffcc;
+      --text: #eaeaf0;
+      --subtle: #9aa0a6;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .checkout-box {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 5px 15px rgba(0, 255, 204, 0.05);
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: var(--subtle);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.5rem;
+      margin-bottom: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0b0d10;
+      color: var(--text);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background: #33ffd9;
+    }
+
+    .nav-back {
+      margin-top: 1.5rem;
+      color: var(--subtle);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>💳 CFServices Checkout</h1>
+
+<div class="checkout-box">
+  <label for="amount">Bedrag (EUR):</label>
+  <input type="text" id="amount" value="10.00">
+
+  <label for="description">Omschrijving:</label>
+  <input type="text" id="description" value="Testbetaling via Mollie">
+
+  <button onclick="startPayment()">Start Betaling</button>
+</div>
+
+<a href="index.html" class="nav-back">← Terug naar Agents Overzicht</a>
+
+<script>
+  async function startPayment() {
+    const amount = document.getElementById('amount').value;
+    const description = document.getElementById('description').value;
+
+    try {
+      const response = await fetch('/api/create-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount,
+          description,
+          redirectUrl: window.location.origin + '/bedankt.html'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.checkoutUrl) {
+        window.location.href = result.checkoutUrl;
+      } else {
+        alert("Fout bij starten betaling: " + (result.message || "Onbekende fout"));
+      }
+
+    } catch (err) {
+      alert("Kon geen verbinding maken met de betaalgateway.");
+    }
+  }
+</script>
+
+</body>
+</html>

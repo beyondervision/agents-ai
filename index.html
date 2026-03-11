@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Agents & Partners · CFServices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --accent: #00ffcc;
+      --bg: #0e0e11;
+      --panel: #16161d;
+      --border: #222;
+      --text: #eaeaf0;
+      --subtle: #9aa0a6;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      opacity: 0.7;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-back {
+      max-width: 1100px;
+      margin: 1.5rem auto 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-back a {
+      display: inline-block;
+      color: var(--subtle);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-back a:hover {
+      background: #16161d;
+      color: #fff;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid var(--border);
+      padding-left: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1);
+    }
+
+    .card strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card span {
+      font-size: 0.85rem;
+      color: var(--subtle);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Agents & Partners</h1>
+  <p>Z.A.L HUB · 2026 Resonantie</p>
+</header>
+
+<div class="nav-back">
+  <a href="https://www.cfservices.nl">← Terug naar Gate</a>
+</div>
+
+<section>
+  <h2>🔵 Core Agents</h2>
+
+  <div class="grid">
+
+    <div class="card" onclick="window.location.href='dashboard.html'" style="border-left: 4px solid var(--accent);">
+      <strong>Clifton Esajas</strong>
+      <span>Core Agent · Initiator</span>
+    </div>
+
+    <div class="card" onclick="window.location.href='dashboard.html'">
+      <strong>Franklin Vrede</strong>
+      <span>Core Agent · Initiator</span>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

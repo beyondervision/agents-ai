@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/checkout", "destination": "/checkout.html" },
+    { "source": "/bedankt", "destination": "/bedankt.html" },
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ]
+}
